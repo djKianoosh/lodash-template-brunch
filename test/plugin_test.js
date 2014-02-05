@@ -17,10 +17,41 @@ describe('Plugin', function() {
     var content = '<strong><%= weak %></strong>';
     var expected = '<strong>wat</strong>';
 
-    plugin.compile(content, 'template.lodash', function(error, data) {
+    plugin.compile(content, 'template.html', function(error, data) {
       expect(error).not.to.be.ok;
-      expect(eval(data)({weak: 'wat'})).to.equal(expected);
+      eval(data);
+      expect(module.exports["template"]({weak: "wat"})).to.equal(expected);
       done();
     });
   });
+
+  it('should compile with the variable option', function(done) {
+    plugin = new Plugin({plugins: {lodash_template: {variable: "data"}}})
+
+    var content = '<strong><%= data.weak %></strong>';
+    var expected = '<strong>wat</strong>';
+
+    plugin.compile(content, 'template.html', function(error, data) {
+      expect(error).not.to.be.ok;
+      eval(data);
+      expect(module.exports["template"]({weak: "wat"})).to.equal(expected);
+      done();
+    });
+  });
+
+  it('should compile correctly with the namespace option', function(done) {
+    plugin = new Plugin({plugins: {lodash_template: {namespace: "module.tnamespace", variable: "data"}}})
+
+    var content = '<strong><%= data.weak %></strong>';
+    var expected = '<strong>wat</strong>';
+
+    plugin.compile(content, 'template.html', function(error, data) {
+      expect(error).not.to.be.ok;
+      module.tnamespace = {};
+      eval(data);
+      expect(module.tnamespace["template"]({weak: "wat"})).to.equal(expected);
+      done();
+    });
+  });
+
 });
