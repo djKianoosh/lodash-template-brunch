@@ -17,7 +17,7 @@ describe('Plugin', function() {
     var content = '<strong><%= weak %></strong>';
     var expected = '<strong>wat</strong>';
 
-    plugin.compile(content, 'template.underscore', function(error, data) {
+    plugin.compile(content, 'template.lodash', function(error, data) {
       expect(error).not.to.be.ok;
       expect(eval(data)({weak: 'wat'})).to.equal(expected);
       done();

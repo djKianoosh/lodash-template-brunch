@@ -1,27 +1,25 @@
 {
-  "name": "underscore-template-brunch",
-  "version": "1.4.4",
-  "description": "Adds underscore.js template support to brunch.",
+  "name": "lodash-template-brunch",
+  "version": "1.7.0",
+  "description": "Adds lodash template support to brunch.",
   "author": {
-    "name": "Nicolas Vivet"
+    "name": "Gareth Tan"
   },
-  "homepage": "https://github.com/nizox/underscore-template-brunch",
+  "homepage": "https://github.com/garetht/lodash-template-brunch",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nizox/underscore-template-brunch.git"
+    "url": "https://github.com/garetht/lodash-template-brunch.git"
   },
   "main": "./lib/index",
   "scripts": {
     "test": "mocha --require test/common.js --colors"
   },
-  "engines": {
-    "node": "~0.6.10 || 0.8 || 0.9"
-  },
-  "dependencies": {
-    "underscore": "1.4.2"
-  },
   "devDependencies": {
     "mocha": "1.2.2",
-    "chai": "1.1.0"
+    "chai": "1.1.0",
+    "lodash": "~2.4.1"
+  },
+  "dependencies": {
+    "lodash.template": "~2.4.1"
   }
 }
