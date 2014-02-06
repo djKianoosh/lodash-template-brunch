@@ -1,12 +1,26 @@
-## lodash-template-brunch
-Adds [lodash](http://lodash.com/) template support to
-[brunch](http://brunch.io).
+lodash-template-brunch
+===
+Gives [Brunch](http://brunch.io) workflows the ability to precompile [Lo-Dash](http://lodash.com/) templates.
 
-## Usage
-Add `"lodash-template-brunch": "x.y.z"` to `package.json` of your brunch
-app.
+Installing
+===
+lodash-template-brunch is designed to be an npm package for use with the build tool Brunch. To install this as a dependency for your Brunch repository, run `npm install --save lodash-template-brunch`, which will add a line to your `package.json` file.
 
-Pick a plugin version that corresponds to your minor (y) brunch version.
+Usage
+===
+To specify an encoding you can use the configuration options.
 
-If you want to use git version of plugin, add
-`"lodash-template-brunch": "git+https://github.com/garetht/lodash-template-brunch.git"`.
+```coffeescript
+exports.config =
+  plugins:
+    lodash_template:
+      variable: null
+      namespace: "module.exports"
+```
+
+The values given are the defaults for the options.
+
+* `String` or `null` **variable** is equivalent to the option in Lo-Dash. As Lo-Dash's [documentation](http://lodash.com/docs#template) states, this represents the "data object variable name" and ensures that "a with-statement isn't used in the compiled template" if a non-null value for it is specified.
+
+* `String` **namespace** The namespace option allows you to set the object into which the files are compiled. That is, each filename will be turned into the key of the namespace object, and its value will be the source of the compiled template. The string will be printed directly to the source code of the output file, and is therefore interpreted as Javascript.
+
